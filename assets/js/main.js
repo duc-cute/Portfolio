@@ -1,5 +1,6 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
+
 /*==================== MENU SHOW Y HIDDEN ====================*/
 const navMenu = $(".nav__menu");
 const navToggle = $(".nav__toggle");
@@ -25,12 +26,32 @@ if (navClose) {
 navItem.forEach((element) => {
   element.addEventListener("click", hideMenu);
 });
-/*==================== REMOVE MENU MOBILE ====================*/
 
 /*==================== ACCORDION SKILLS ====================*/
+const skillContents = $$(".skills__content");
+
+skillContents.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    tab.classList.toggle("active");
+  });
+});
 
 /*==================== QUALIFICATION TABS ====================*/
+const qualifiContents = $$(".qualification__content");
+const qualifiBtns = $$(".qualification__button");
 
+qualifiBtns.forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    let qualifiContent = qualifiContents[index];
+
+    if (!btn.classList.contains("active")) {
+      $(".qualification__button.active").classList.remove("active");
+      $(".qualification__content.active").classList.remove("active");
+      btn.classList.add("active");
+      qualifiContent.classList.add("active");
+    }
+  });
+});
 /*==================== SERVICES MODAL ====================*/
 
 /*==================== PORTFOLIO SWIPER  ====================*/
