@@ -52,10 +52,49 @@ qualifiBtns.forEach((btn, index) => {
     }
   });
 });
+
 /*==================== SERVICES MODAL ====================*/
+const modalViews = $$(".services__modal"),
+  modalBtns = $$(".services__button"),
+  modalContents = $$(".services__modal-content"),
+  modalCloses = $$(".services__modal-close");
 
-/*==================== PORTFOLIO SWIPER  ====================*/
+modalBtns.forEach((modalBtn, index) => {
+  const modalView = modalViews[index];
+  const modalClose = modalCloses[index];
+  const modalContent = modalContents[index];
 
+  modalBtn.addEventListener("click", () => {
+    modalView.classList.add("active");
+  });
+
+  modalClose.addEventListener("click", () => {
+    modalView.classList.remove("active");
+  });
+
+  modalView.addEventListener("click", () => {
+    modalView.classList.remove("active");
+  });
+
+  modalContent.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+});
+
+// /*==================== PORTFOLIO SWIPER  ====================*/
+let swiper = new Swiper(".portfolio__container", {
+  cssMode: true,
+  loop: true,
+
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+});
 /*==================== TESTIMONIAL ====================*/
 
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
